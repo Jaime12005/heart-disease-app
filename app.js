@@ -57,11 +57,8 @@ async function predictFromArray(rawFeatures) {
   const result    = await session.run({ [inputName]: tensor });
 
   // Buscar la salida de etiqueta (label)
-  const labelKey = session.outputNames.find(k =>
-    k.toLowerCase().includes('label') || k === 'variable'
-  ) || session.outputNames[0];
-
-  const prediction = Number(result[labelKey].data[0]);
+  // Usar siempre output_label (primera salida)
+  const prediction = Number(result['output_label'].data[0]);
   return prediction;
 }
 
