@@ -17,7 +17,7 @@ const FEATURE_COLS = [
 // ── Cargar modelos al iniciar ──
 async function loadModels() {
   try {
-    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.3/dist/';
+    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/';
     ort.env.wasm.numThreads = 1;
     ort.env.wasm.simd = true;
     setStatus('loading', 'Cargando modelos…');
