@@ -54,7 +54,7 @@ async function predictFromArray(rawFeatures) {
   const session   = activeModel === 'logreg' ? logregSession : mlpSession;
   const inputName = session.inputNames[0];
   const tensor    = new ort.Tensor('float32', Float32Array.from(rawFeatures), [1, 13]);
-  const result    = await session.run({ [inputName]: tensor });
+  const result = await session.run({ [inputName]: tensor }, ['output_label']);
 
   // Buscar la salida de etiqueta (label)
   // Usar siempre output_label (primera salida)
